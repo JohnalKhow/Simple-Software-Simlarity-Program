@@ -34,6 +34,7 @@ public class Compare {
     public static void main(String[] args) {
         double percentage;
         read_files(".cpp");
+        System.out.print("Hello");
         percentage = (similar / total) * 100;
         System.out.print("\nCPP Similarity: " + two_point.format(percentage) + "%");
         read_files(".java");
