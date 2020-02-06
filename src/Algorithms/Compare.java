@@ -1,3 +1,5 @@
+package Algorithms;
+
 import java.text.DecimalFormat;
 
 public class Compare {

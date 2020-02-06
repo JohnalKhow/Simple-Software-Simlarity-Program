@@ -1,3 +1,5 @@
+package Algorithms;
+
 import java.io.File;
 
 public class Directory_checker {

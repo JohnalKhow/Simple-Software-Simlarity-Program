@@ -1,6 +1,7 @@
+package Algorithms;
+
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class Read {
