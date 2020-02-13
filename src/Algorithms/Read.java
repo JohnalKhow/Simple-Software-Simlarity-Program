@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Read {
-    public double[][] read_files(String file_ext) {
+    public double[][] read_files() {
         String data1, data2;
         Directory_checker dir = new Directory_checker();
         File[] files = dir.showFiles("Directory");
