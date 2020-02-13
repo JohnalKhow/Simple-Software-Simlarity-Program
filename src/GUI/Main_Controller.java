@@ -32,7 +32,12 @@ public class Main_Controller {
             similarity_matrix.getColumnConstraints().addAll(new ColumnConstraints(70));
             similarity_matrix.getRowConstraints().addAll(new RowConstraints(20));
             for(int j=0;j<files.length; j++){
-                similarity_matrix.add(new Label(two_point.format(matrix[i][j])), i+1, j+1);
+                if(matrix[i][j]==1.0){
+                    similarity_matrix.add(new Label((two_point.format(matrix[i][j]))), i+1, j+1);
+                }
+                else {
+                    similarity_matrix.add(new Label(two_point.format(matrix[i][j])), i+1, j+1);
+                }
             }
         }
 
