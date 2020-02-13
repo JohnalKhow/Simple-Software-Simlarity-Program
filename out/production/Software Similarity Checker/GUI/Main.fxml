@@ -9,13 +9,12 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Main_Controller">
    <children>
-      <Button layoutX="62.0" layoutY="31.0" mnemonicParsing="false" text="Choose Directory" />
-      <Button layoutX="207.0" layoutY="28.0" mnemonicParsing="false" onAction="#handle_btnCHECK" text="Check for similarity" />
-      <ScrollPane layoutX="15.0" layoutY="75.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="538.0" prefWidth="1058.0">
+      <Button layoutX="33.0" layoutY="33.0" mnemonicParsing="false" onAction="#handle_btnCHECK" text="Check for similarity" />
+      <ScrollPane fx:id="scroll_pane" layoutX="15.0" layoutY="75.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="538.0" prefWidth="1058.0" visible="false">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0">
                <children>
-                  <GridPane fx:id="Correlation_matrix" gridLinesVisible="true" layoutX="7.0" layoutY="43.0">
+                  <GridPane fx:id="similarity_matrix" gridLinesVisible="true" layoutX="4.0" layoutY="6.0" visible="false">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
