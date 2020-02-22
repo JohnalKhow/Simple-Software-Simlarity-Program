@@ -1,41 +1,72 @@
 package Algorithms;
 
-import java.io.File;
+import java.io.*;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 
 public class Files {
-    ArrayList<String> file_references = new ArrayList<>();
+    ArrayList<String> final_ref = new ArrayList<>();
     ArrayList<String> file_name = new ArrayList<>();
     File[] files;
-    public ArrayList<String> getFiles(String dir) {
+    String fileExt;
+
+    public ArrayList<String> getFiles(String dir, int choice) throws IOException {
         //Returns all directory references of the scanned files
-        readDirectory(dir);
-        return file_references;
+        readDirectory(dir, choice);
+        if (choice == 1) {
+            fileExt = ".java";
+        } else if (choice == 2) {
+            fileExt = ".cpp";
+        }
+        for (int i = 0; i < file_name.size(); i++) {
+            merge(file_name.get(i), fileExt);
+        }
+        insertFiles(choice);
+        return final_ref;
     }
 
-    public ArrayList<String> getFileNames() {
-        //Returns all file names of the scanned files
-        return file_name;
+    public void insertFiles(int choice) {
+        File[] final_files = new File("temp").listFiles();
+        for (File file : final_files) {
+            if (file.isFile()) {
+                if (choice == 1) {
+                    if (file.getName().contains(".java")) {
+                        this.final_ref.add(file.toString());
+                    }
+                } else if (choice == 2) {
+                    if (file.getName().contains(".cpp")) {
+                        this.final_ref.add(file.toString());
+                    }
+                }
+            }
+        }
     }
 
-    public void readDirectory(String dir) {
+    public void readDirectory(String dir, int choice) {
         files = new File(dir).listFiles();
         assert files != null;
         for (File file : files) {
-            //If file is indeed a file, store file_names and full directory paths
-            //files = directory reference
-            //file_name = display name reference
-            if (file.isFile()) {
-                this.file_references.add(file.toString());
-                this.file_name.add(" ");
-            }
-
-            //If "file" is directory
-            else if (file.isDirectory()) {
-                readDirectory(dir + "/" + file.getName());
+            if (file.isDirectory()) {
+                readDirectory(dir + "/" + file.getName(), choice);
                 this.file_name.add(file.getName());
             }
+        }
+    }
+
+    public void merge(String fileRef, String fileExt) throws IOException {
+        File dir = new File("Directory/" + fileRef);
+        PrintWriter pw = new PrintWriter("temp/" + fileRef + "" + fileExt);
+        String[] fileNames = dir.list();
+        for (String fileName : fileNames) {
+            File f = new File(dir, fileName);
+            BufferedReader br = new BufferedReader(new FileReader(f));
+            String line = br.readLine();
+            while (line != null) {
+                pw.println(line);
+                line = br.readLine();
+            }
+            pw.flush();
         }
     }
 

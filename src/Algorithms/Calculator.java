@@ -2,28 +2,30 @@ package Algorithms;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import java.util.regex.Pattern;
+
 public class Calculator {
-    ArrayList<String> fileName = new ArrayList<>();
-    String data1;
-    String data2;
-    double total = 0;
-    double similar = 0;
-    double[][] similarity;
-    Files dir = new Files();
-    File program_1;
-    File program_2;
-    Scanner first_cmp;
-    Scanner second_cmp;
-    public double[][] getScore() throws FileNotFoundException {
-        fileName = dir.getFiles("Directory");
-        similarity = new double[fileName.size()][fileName.size()];
-        for (int i = 0; i < fileName.size(); i++) {
-            for (int j = 0; j < fileName.size(); j++) {
-                program_1 = new File(fileName.get(i));
-                program_2 = new File(fileName.get(j));
+
+    public double[][] getScore() throws IOException {
+        Files fileRef = new Files();
+        String data1;
+        String data2;
+        File program_1;
+        File program_2;
+        Scanner first_cmp;
+        Scanner second_cmp;
+        ArrayList<String> filePointers = fileRef.getFiles("Directory", 1);
+        double[][] similarityScore = new double[filePointers.size()][filePointers.size()];
+        double total = 0;
+        double similar = 0;
+        for (int i = 0; i < filePointers.size(); i++) {
+            for (int j = 0; j < filePointers.size(); j++) {
+                program_1 = new File(filePointers.get(i));
+                program_2 = new File(filePointers.get(j));
                 first_cmp = new Scanner(program_1);
                 second_cmp = new Scanner(program_2);
                 while (first_cmp.hasNextLine() && second_cmp.hasNextLine()) {
@@ -35,14 +37,15 @@ public class Calculator {
                     }
                 }
                 double percentage = (similar / total);
-                similarity[i][j] = percentage;
+                similarityScore[i][j] = percentage;
                 total = 0;
                 similar = 0;
                 first_cmp.close();
                 second_cmp.close();
             }
         }
-
-        return similarity;
+        return similarityScore;
     }
+
+
 }
