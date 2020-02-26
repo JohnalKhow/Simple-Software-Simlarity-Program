@@ -123,7 +123,7 @@ public class mainController implements Initializable {
 
     @FXML
     private void exportMetrics(ActionEvent event) throws IOException {
-        BufferedWriter writer = new BufferedWriter(new FileWriter("Metrics.txt", false));
+        BufferedWriter writer = new BufferedWriter(new FileWriter("assets/Metrics/Metrics.txt", false));
         String pathDirectory = "src";
         HalsteadMetrics hal = MetricGenerator.getMetrics(pathDirectory);
         writer.write("\nOverall Distinct Operators= "+ hal.getDistOperators());
@@ -141,6 +141,6 @@ public class mainController implements Initializable {
         writer.write("\nProgramming time= "+ Math.round(hal.getTimeReqProg()) + " seconds");
         writer.write("\nDelivered bugs= "+ hal.getTimeDelBugs());
         writer.close();
-        Desktop.getDesktop().open(new File("Metrics.txt"));
+        Desktop.getDesktop().open(new File("assets/Metrics/Metrics.txt"));
     }
 }

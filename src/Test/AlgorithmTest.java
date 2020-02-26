@@ -31,9 +31,10 @@ class AlgorithmTest {
     void checkMetric() throws IOException {
         boolean checker =false;
         Files file = new Files();
-        ArrayList<String> files = file.readDirectory("Directory", 1);
+        ArrayList<String> files = file.insertFiles("assets/Metrics", 3);
         for(int i=0; i<files.size(); i++){
-            if (files.get(i).contains("Metrics")) {
+
+            if (files.get(i).contains("Metrics.txt")) {
                 checker=true;
             }
         }

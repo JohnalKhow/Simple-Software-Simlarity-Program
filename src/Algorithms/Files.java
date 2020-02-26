@@ -22,12 +22,12 @@ public class Files {
         for (int i = 0; i < file_name.size(); i++) {
             merge(file_name.get(i), fileExt);
         }
-        insertFiles(choice);
+        insertFiles("temp",choice);
         return final_ref;
     }
 
-    public void insertFiles(int choice) {
-        File[] final_files = new File("temp").listFiles();
+    public ArrayList<String> insertFiles(String dir,int choice) {
+        File[] final_files = new File(dir).listFiles();
         for (File file : final_files) {
             if (file.isFile()) {
                 if (choice == 1) {
@@ -38,10 +38,16 @@ public class Files {
                     if (file.getName().contains(".cpp")) {
                         this.final_ref.add(file.toString());
                     }
+                }else if (choice == 3) {
+                        if (file.getName().contains(".txt")) {
+                            this.final_ref.add(file.toString());
+                        }
+                    }
                 }
             }
+        return  final_ref;
         }
-    }
+
 
     public ArrayList<String> readDirectory(String dir, int choice) {
         files = new File(dir).listFiles();

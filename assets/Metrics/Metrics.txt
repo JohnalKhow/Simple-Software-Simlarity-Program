@@ -1,0 +1,15 @@
+
+Overall Distinct Operators= 40
+Overall Distinct Operands= 567
+Overall Total Operators= 272
+Overall Total Operands= 1827
+
+###### Halstead Complexity Metrics ######
+Vocabulary= 607
+Program Length= 2099
+Calculated Program Length= 5399.342316237738
+Volume= 19406.41513043068
+Difficulty Level= 64.44444444444444
+Effort Level= 1250635.641738866
+Programming time= 69480 seconds
+Delivered bugs= 6.468805043476893
