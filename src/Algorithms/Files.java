@@ -43,15 +43,15 @@ public class Files {
         }
     }
 
-    public void readDirectory(String dir, int choice) {
+    public ArrayList<String> readDirectory(String dir, int choice) {
         files = new File(dir).listFiles();
-        assert files != null;
         for (File file : files) {
             if (file.isDirectory()) {
                 readDirectory(dir + "/" + file.getName(), choice);
                 this.file_name.add(file.getName());
             }
         }
+        return file_name;
     }
 
     public void merge(String fileRef, String fileExt) throws IOException {
